@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  box-sizing: border-box;
+  height: 100vh;
+  font-family: Helvetica;
+  overflow: hidden;
+}
+
+div {
+  border-radius: 5px;
+  text-wrap: pretty;
+}
+
+input {
+  background: -webkit-linear-gradient(right, #ece9e6, #ffffff);
+  border-radius: 5px;
+  font-size: 15px;
+  background: url("/../assets/backgrounds/texture1.jpg");
+  background-size: cover;
+}
+
+input:focus {
+  border: 2px inset lightblue;
+  outline: none;
+}
+
+textarea {
+  background: -webkit-linear-gradient(right, #ece9e6, #ffffff);
+  border-radius: 5px;
+  font-size: 15px;
+  background: url("/../assets/backgrounds/texture1.jpg");
+  background-size: cover;
+  resize: none;
+}
+
+textarea:focus {
+  border: 2px inset lightblue;
+  outline: none;
+}
+
+button {
+  font-family: Helvetica;
+  cursor: pointer;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  box-shadow: 2px 4px black;
+  background: url("/../assets/backgrounds/texture4.jpg");
+  background-size: cover;
+  font-weight: 700;
+  font-size: 13px;
+  transition: 0.175s ease;
+}
+
+button:active {
+  transform: translate(2px, 4px);
+  box-shadow: none;
+}
+
+.symbol-large {
+  font-size: 2em;
+}
+
+.close:active {
+  cursor: grabbing;
+}
+
+body,
+app-root {
+  background: url("/../assets/backgrounds/bg2.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.loading-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+}
+
+.loading-element {
+  width: 50vw;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-text {
+  text-align: center;
+}
+
+.symbol-xl {
+  font-size: 80px;
+}

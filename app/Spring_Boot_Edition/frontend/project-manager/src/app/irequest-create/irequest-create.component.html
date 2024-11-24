@@ -1,0 +1,28 @@
+<div class="main" *ngIf="isOpen" #mainDiv>
+    <div class="close" #closeDiv>
+        <button (click)="close()" class="close-button">X</button>
+    </div>
+    <div class="content-wrap">
+        <h3>Create new inbound request</h3>
+        <div class="info">
+            <div class="input-wrap">
+                <label for="irequestName">Title</label>
+                <br>
+                <input type="text" id="irequestName" name="irequestName" #title>
+            </div>
+            <div class="input-wrap">
+                <label for="irequestEmail">Sent by</label>
+                <br>
+                <input type="email" id="irequestEmail" name="irequestEmail" #sender>
+            </div>
+            <div class="input-wrap">
+                <label for="irequestEmail">Description</label>
+                <br>
+                <textarea type="email" id="content" name="irequestEmail" #description></textarea>
+            </div>
+        </div>
+        <div class="button-wrap">
+            <button (click)="createIrequest(title.value, sender.value, description.value)">Create new request</button>
+        </div>
+    </div>
+</div>

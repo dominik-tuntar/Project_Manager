@@ -1,0 +1,23 @@
+<div class="main" *ngIf="isOpen" #mainDiv>
+    <div class="close" #closeDiv>
+        <button (click)="close()" class="close-button">X</button>
+    </div>
+    <div class="content-wrap">
+        <h3>Finalize project</h3>
+        <div class="info">
+            <div class="input-wrap">
+                <label for="projectTitle">Project Title</label>
+                <br>
+                <input type="text" id="projectTitle" name="projectTitle" #title>
+            </div>
+            <div class="input-wrap">
+                <label for="projectDescription">Project Description</label>
+                <br>
+                <textarea id="content" name="projectDescription" #description rows="3"></textarea>
+            </div>
+        </div>
+        <div class="button-wrap">
+            <button (click)="createFinalProject(title.value, description.value)">Finalize</button>
+        </div>
+    </div>
+</div>

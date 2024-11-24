@@ -1,0 +1,39 @@
+Folder PATH listing
+Volume serial number is 000000E6 52AB:D4A3
+C:\GITHUB PROJECTS\IFUCKINGHATEGIT\PROJECT_MANAGER_ORACLE\APP\SPRING_BOOT_EDITION\PROJECTMANAGER
+ÃÄÄÄ.idea
+ÃÄÄÄ.mvn
+³   ÀÄÄÄwrapper
+ÃÄÄÄsrc
+³   ÃÄÄÄmain
+³   ³   ÃÄÄÄjava
+³   ³   ³   ÀÄÄÄdtuntar
+³   ³   ³       ÀÄÄÄprojects
+³   ³   ³           ÀÄÄÄprojectManager
+³   ³   ³               ÃÄÄÄcontroller
+³   ³   ³               ÃÄÄÄmodel
+³   ³   ³               ÃÄÄÄrepo
+³   ³   ³               ÀÄÄÄservice
+³   ³   ÀÄÄÄresources
+³   ³       ÃÄÄÄstatic
+³   ³       ÀÄÄÄtemplates
+³   ÀÄÄÄtest
+³       ÀÄÄÄjava
+³           ÀÄÄÄdtuntar
+³               ÀÄÄÄprojects
+³                   ÀÄÄÄprojectManager
+ÃÄÄÄtarget
+³   ÃÄÄÄclasses
+³   ³   ÀÄÄÄdtuntar
+³   ³       ÀÄÄÄprojects
+³   ³           ÀÄÄÄprojectManager
+³   ³               ÃÄÄÄcontroller
+³   ³               ÃÄÄÄmodel
+³   ³               ÀÄÄÄservice
+³   ÀÄÄÄgenerated-sources
+³       ÀÄÄÄannotations
+ÀÄÄÄuploads
+    ÃÄÄÄfinal_project
+    ÃÄÄÄknowledge_base
+    ÃÄÄÄknown_issue
+    ÀÄÄÄtask

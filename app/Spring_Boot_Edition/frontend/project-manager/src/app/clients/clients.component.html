@@ -1,0 +1,60 @@
+<div class="main">
+    <h1 class="main-title">🏢&#xFE0E; Clients</h1>
+    <div class="search">
+        <label for="client-search">Search for client</label>
+        <br><br>
+        <input type="text" id="client-search" name="client-search" [(ngModel)]="searchTerm" (keyup)="filterClients()">
+    </div>
+    <div class="content-wrap">
+        <div class="client-list">
+            <div *ngFor="let client of filteredClients" class="client-wrap">
+                <div class="client" [ngClass]="{'selected-client': selectedClientId === client.ID_CLIENT}"
+                    (click)="getSelectedClientInfo(client)">
+                    <p>{{client.NAME_}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="client-details">
+            <h3>Client Details</h3>
+            <div class="client-details-wrap">
+                <p><strong>Email:</strong> {{ selectedClientInfo ? selectedClientInfo.EMAIL : '' }}</p>
+                <div class="cca-wrap" *ngFor="let custom_attribute of filteredAttributes">
+                    <div class="client-c-attribute"
+                        *ngIf="custom_attribute.TABLE_NAME === 'CLIENT' && custom_attribute.TABLE_ROW === selectedClientId"
+                        [ngClass]="{'selected-catt': selectedCattId === custom_attribute.ID_C_ATTRIBUTE}"
+                        (click)="getSelectedCattInfo(custom_attribute)">
+                        <p>{{custom_attribute.TITLE}} - {{custom_attribute.CONTENT_}}</p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="idEmployeeRole === 1" class="c-attribute-navbar">
+                <div class="s-catt-text">
+                    <h4>Selected item: {{ selectedCattInfo ? selectedCattInfo.TITLE : '' }}</h4>
+                </div>
+                <button class="can-button" (click)="showCattCreatePopup()"><span
+                        class="symbol-large">➕&#xFE0E;</span><br>Add<br>detail</button>
+                <app-cattribute-create #popupCattCreate
+                    (customAttributeCreated)="onCustomAttributeCreated()"></app-cattribute-create>
+                <button class=can-button (click)="showCattUpdatePopup()"><span
+                        class="symbol-large">✍&#xFE0E;</span><br>Update<br>detail</button>
+                <app-cattribute-update #popupCattUpdate
+                    (customAttributeUpdated)="onCustomAttributeUpdated($event)"></app-cattribute-update>
+                <button class="can-button" (click)="deleteCustomAttribute(selectedCattId)"><span
+                        class="symbol-large">➖&#xFE0E;</span><br>Remove<br>detail</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="idEmployeeRole === 1" class="client-navbar">
+        <div class="s-client-text">
+            <h2>Selected client: {{ selectedClientInfo ? selectedClientInfo.NAME_ : '' }}</h2>
+        </div>
+        <button class=client-button (click)="showCreatePopup()"><span class="symbol-large">🏢︎&#xFE0E;</span><br>Create
+            new client</button>
+        <app-client-create #popupCreate (clientCreated)="onClientCreated()"></app-client-create>
+        <button class="client-button" (click)="showUpdatePopup()"><span class="symbol-large">✍&#xFE0E;</span><br>Update
+            Client</button>
+        <app-client-update #popupUpdate (clientUpdated)="onClientUpdated($event)"></app-client-update>
+        <button class="client-button" (click)="deleteClient(selectedClientId)"><span
+                class="symbol-large">🗑︎&#xFE0E;</span><br>Delete Client</button>
+    </div>
+</div>

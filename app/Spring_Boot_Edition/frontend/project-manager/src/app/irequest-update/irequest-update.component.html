@@ -1,0 +1,31 @@
+<div class="main" *ngIf="isOpen" #mainDiv>
+    <div class="close" #closeDiv>
+        <button (click)="close()" class="close-button">X</button>
+    </div>
+    <div class="content-wrap" *ngIf="selectedIrequest">
+        <h3>Update request: {{ selectedIrequest.TITLE }}</h3>
+        <div class="info">
+            <div class="input-wrap">
+                <label for="name">Title</label>
+                <br>
+                <input type="text" id="name" name="name" [(ngModel)]="selectedIrequest.TITLE" #title>
+            </div>
+            <div class="input-wrap">
+                <label for="email">Sent by</label>
+                <br>
+                <input type="email" id="email" name="email" [(ngModel)]="selectedIrequest.SENDER_NAME" #sender>
+            </div>
+            <div class="input-wrap">
+                <label for="email">Description</label>
+                <br>
+                <textarea type="email" id="content" name="email" [(ngModel)]="selectedIrequest.DESCRIPTION_"
+                    #description></textarea>
+            </div>
+        </div>
+        <div class="button-wrap">
+            <button
+                (click)="updateIrequest(selectedIrequest.ID_I_REQUEST, title.value, sender.value, description.value)">Update
+                request</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="main">
+  <div class=component-wrap *ngIf="isLoggedIn">
+    <div class=component>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <app-navbar-main *ngIf="isLoggedIn"></app-navbar-main>
+  <app-login *ngIf="!isLoggedIn" (loginSuccess)="onLoginSuccess()"></app-login>
+</div>

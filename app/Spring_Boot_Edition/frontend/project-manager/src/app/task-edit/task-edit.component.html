@@ -1,0 +1,59 @@
+<div class="main" *ngIf="isOpen" #mainDiv>
+    <div class="close" #closeDiv>
+        <button (click)="close()" class="close-button">X</button>
+    </div>
+    <div class="content-wrap" *ngIf="selectedProject">
+        <h2 class="main-title">📝︎&#xFE0E; Tasks for project: {{selectedTitle}}</h2>
+        <div class="task-wrap">
+            <!--<div class="task-id">
+                <strong>Task ID</strong>
+                Test for rendering multiple elements: *ngFor="let _ of [].constructor(10); let i = index"-->
+            <!--<div class="id-cond" *ngFor="let t of task_data">
+                    <p>{{ t.ID_TASK }}</p>
+                    <p>renderTest</p>
+                </div>
+            </div>-->
+            <div class="task-description">
+                <div class="column-text"><strong>Description</strong></div>
+                <div class="task-cond" *ngFor="let t of task_data">
+                    <p>{{ t.DESCRIPTION_ }}</p>
+                </div>
+            </div>
+            <div class="task-user">
+                <div class="column-text"><strong>User</strong></div>
+                <div class="user-cond" *ngFor="let t of task_data">
+                    <p>{{ t.USERNAME }}</p>
+                </div>
+            </div>
+            <div class="task-complete">
+                <div class="column-text"><strong>Status</strong></div>
+                <div class="complete-cond" *ngFor="let t of task_data">
+                    <p>{{ t.STATUS === 1 ? '🗸&#xFE0E; Complete' : '🗙&#xFE0E; Incomplete' }}</p>
+                </div>
+            </div>
+            <div class="task-options">
+                <div class="column-text"><strong>Options</strong></div>
+                <div class="options-cond" *ngFor="let t of task_data">
+                    <button class="te-button"
+                        (click)="showTaskUpdatePopup(t.ID_TASK, t.DESCRIPTION_, t.ID_EMPLOYEE, t.USERNAME)"><span
+                            class="symbol-large">✍&#xFE0E;</span><br>Edit</button>
+                    <app-task-update *ngIf="popupTaskUpdateVisible" #popupTaskUpdate
+                        (taskUpdated)="onTaskUpdated()"></app-task-update>
+                    <button class="te-button" (click)="deleteTask(t.ID_TASK)"><span
+                            class="symbol-large">🗑&#xFE0E;</span><br>Delete</button>
+                    <button class="te-button" (click)="downloadFiles(t.ID_TASK)"><span
+                            class="symbol-large">📥&#xFE0E;</span><br>Download</button>
+                    <button class="te-button" (click)="updateTaskStatus(t.ID_TASK, 1)"><span
+                            class="symbol-large">🗸&#xFE0E;</span><br>Complete</button>
+                    <button class="te-button" (click)="updateTaskStatus(t.ID_TASK, 0)"><span
+                            class="symbol-large">🗙&#xFE0E;</span><br>Incomplete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="task-navbar">
+        <button class="ntb" (click)="showTaskCreatePopup()">📝︎︎&#xFE0E; New task</button>
+        <app-task-create *ngIf="popupTaskCreateVisible" #popupTaskCreate
+            (taskCreated)="onTaskCreated()"></app-task-create>
+    </div>
+</div>

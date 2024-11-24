@@ -1,0 +1,25 @@
+<div class=main>
+  <div class="login-container">
+    <div class=login-text>
+      <h2 class="lt">🔐&#xFE0E; Project Manager - Log in</h2>
+    </div>
+    <form (submit)="login()">
+      <div class=login-input>
+        <label for="username">Username</label>
+        <br><br>
+        <input id="username" [(ngModel)]="username" name="username" required>
+      </div>
+      <div class=login-input>
+        <label for="password">Password</label>
+        <br><br>
+        <input type="password" id="password" [(ngModel)]="password" name="password" required>
+        <div class="insert-err">
+          <h4 *ngIf="passwordMatch === 0" class="et">⚠&#xFE0E; Invalid credentials</h4>
+        </div>
+      </div>
+      <div class="login-button">
+        <button type="submit">🔑&#xFE0E; Log in</button>
+      </div>
+    </form>
+  </div>
+</div>

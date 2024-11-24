@@ -1,0 +1,90 @@
+<div class="main">
+    <h1 class="main-title">🗗&#xFE0E; Projects</h1>
+    <div class="search">
+        <label for="project-search">Search for project</label>
+        <br><br>
+        <input type="text" id="project-search" name="project-search" [(ngModel)]="searchTerm"
+            (keyup)="filterProjects()">
+    </div>
+    <div class="content-wrap">
+        <div class="project-list">
+            <div *ngFor="let project of filteredProjects" class="project-wrap">
+                <div class="project" [ngClass]="{'selected-project': selectedProjectId === project.ID_DEVPROJECT}"
+                    (click)="getSelectedProjectInfo(project)">
+                    <p>{{project.TITLE}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="project-details">
+            <h3>Project Details</h3>
+            <div class="project-details-wrap">
+                <p><strong>Description:</strong>{{ selectedProjectInfo ? selectedProjectInfo.DESCRIPTION_ : '' }}</p>
+                <div class="cca-wrap" *ngFor="let custom_attribute of filteredAttributes">
+                    <div class="project-c-attribute"
+                        *ngIf="custom_attribute.TABLE_NAME === 'DEVPROJECT' && custom_attribute.TABLE_ROW === selectedProjectId"
+                        [ngClass]="{'selected-catt': selectedCattId === custom_attribute.ID_C_ATTRIBUTE}"
+                        (click)="getSelectedCattInfo(custom_attribute)">
+                        <p>{{custom_attribute.TITLE}} - {{custom_attribute.CONTENT_}}</p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="idEmployeeRole === 1" class="c-attribute-navbar">
+                <div class="s-catt-text">
+                    <h4>Selected item: {{ selectedCattInfo ? selectedCattInfo.TITLE : '' }}</h4>
+                </div>
+                <div class=can-button-wrap>
+                    <button class="can-button" (click)="showCattCreatePopup()"><span
+                            class="symbol-large">➕&#xFE0E;</span><br>Add<br>detail</button>
+                    <app-cattribute-create #popupCattCreate
+                        (customAttributeCreated)="onCustomAttributeCreated()"></app-cattribute-create>
+                    <button class=can-button (click)="showCattUpdatePopup()"><span
+                            class="symbol-large">✍&#xFE0E;</span><br>Update<br>detail</button>
+                    <app-cattribute-update #popupCattUpdate
+                        (customAttributeUpdated)="onCustomAttributeUpdated($event)"></app-cattribute-update>
+                    <button class="can-button" (click)="deleteCustomAttribute(selectedCattId)"><span
+                            class="symbol-large">➖&#xFE0E;</span><br>Remove<br>detail</button>
+                </div>
+            </div>
+        </div>
+        <div class="project-users">
+            <h3>Project Users</h3>
+            <div class="project-details-wrap">
+                <div class="cca-wrap">
+                    <div class="project-c-attribute" *ngFor="let employee of employees_project">
+                        <p>{{ employee.USERNAME }} - {{ employee.FULLNAME }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="c-attribute-navbar">
+                <div *ngIf="idEmployeeRole === 1" class="s-catt-text">
+                    <h4>User actions</h4>
+                </div>
+                <div class=can-button-wrap>
+                    <button class="can-button" (click)="showProjectAssignPopup()" *ngIf="idEmployeeRole === 1"><span
+                            class="symbol-large">👥&#xFE0E;</span><br>Manage users</button>
+                    <app-project-assign #popupProjectAssign (onClose)="refreshProjectUsers()">
+                    </app-project-assign>
+                    <button class="can-button" (click)="showFinalizePopup()" *ngIf="isProjectAllowed()"><span
+                            class="symbol-large">⎘&#xFE0E;</span><br>Finalize
+                        project</button>
+                    <app-final-project-create #popupFinalize
+                        (projectFinalized)="onProjectFinalized()"></app-final-project-create>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="project-navbar" *ngIf="idEmployeeRole === 1">
+        <div class="s-project-text">
+            <h2>Selected project: {{selectedProjectInfo ? selectedProjectInfo.TITLE : ''}}</h2>
+        </div>
+        <button class=project-button (click)="showCreatePopup()"><span class="symbol-large">🗗&#xFE0E;</span><br>New
+            project</button>
+        <app-project-create #popupCreate (projectCreated)="onProjectCreated()"></app-project-create>
+        <button class="project-button" (click)="showUpdatePopup()"><span class="symbol-large">✍&#xFE0E;</span><br>Update
+            project</button>
+        <app-project-update #popupUpdate (projectUpdated)="onProjectUpdated($event)"></app-project-update>
+        <button class="project-button" (click)="deleteProject(selectedProjectId)"><span
+                class="symbol-large">🗑︎&#xFE0E;</span><br>Delete
+            Project</button>
+    </div>
+</div>

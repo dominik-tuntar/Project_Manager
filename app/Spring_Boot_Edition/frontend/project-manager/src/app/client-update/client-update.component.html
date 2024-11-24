@@ -1,0 +1,23 @@
+<div class="main" *ngIf="isOpen" #mainDiv>
+    <div class="close" #closeDiv>
+        <button (click)="close()" class="close-button">X</button>
+    </div>
+    <div class="content-wrap" *ngIf="selectedClient">
+        <h3>Update client: {{ selectedClient.NAME_ }}</h3>
+        <div class="info">
+            <div class="input-wrap">
+                <label for="name">Name</label>
+                <br>
+                <input type="text" id="name" name="name" [(ngModel)]="selectedClient.NAME_" #name>
+            </div>
+            <div class="input-wrap">
+                <label for="email">Email</label>
+                <br>
+                <input type="email" id="email" name="email" [(ngModel)]="selectedClient.EMAIL" #email>
+            </div>
+        </div>
+        <div class="button-wrap">
+            <button (click)="updateClient(selectedClient.ID_CLIENT, name.value, email.value)">Update Client</button>
+        </div>
+    </div>
+</div>

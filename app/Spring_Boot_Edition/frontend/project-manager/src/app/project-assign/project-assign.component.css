@@ -1,0 +1,70 @@
+.main {
+    width: 50vw;
+    max-width: 550px;
+    height: 43vh;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    z-index: 1000;
+    background: url("/../assets/backgrounds/texture18.jpg");
+    border: 2px outset rgb(139, 158, 197);
+    background-size: cover;
+    border-radius: 15px;
+}
+
+button {
+    padding: 3px;
+    background: url("/../assets/backgrounds/texture4.jpg");
+    background-size: cover;
+    border-radius: 5px;
+}
+
+h1,
+h2,
+h5,
+h4,
+p,
+h3,
+label {
+    background: -webkit-linear-gradient(#141e30, #243b55);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.close {
+    text-align: right;
+    cursor: grab;
+    background-color: rgb(139, 158, 197);
+}
+
+.close-button {
+    width: 7%;
+    height: 25px;
+}
+
+.wrap {
+    display: flex;
+}
+
+.selected-user {
+    background-color: rgb(144, 174, 238);
+}
+
+.el-users-wrap {
+    margin: 20px;
+}
+
+.selected-el-user,
+.selected-proj-user {
+    margin: 15px;
+}
+
+.el-user-item {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.confirm {
+    text-align: right;
+    margin-right: 15px;
+}

@@ -1,0 +1,47 @@
+<div class="main">
+    <h1 class="main-title">🗐&#xFE0E; Final projects</h1>
+    <div class="search">
+        <label for="fproject-search">🔍&#xFE0E; Search for final project</label>
+        <br><br>
+        <input type="text" id="fproject-search" name="fproject-search" [(ngModel)]="searchTerm"
+            (keyup)="filterFprojects()">
+    </div>
+    <div class="content-wrap">
+        <div class="fproject-list">
+            <div *ngFor="let fproject of filteredFprojects" class="fproject-wrap">
+                <div class="fproject" [ngClass]="{'selected-fproject': selectedFprojectId === fproject.ID_F_PROJECT}"
+                    (click)="getSelectedFprojectInfo(fproject)">
+                    <p>{{fproject.TITLE}}</p>
+                </div>
+                <div class=fproject-status>
+                    <p>{{ fproject.STATUS === 1 ? '🗸&#xFE0E; Active' : '🗙&#xFE0E; Inactive' }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="fproject-details">
+            <h3>Final project Details</h3>
+            <div class="fproject-details-wrap">
+                <p><strong>Description:</strong> {{ selectedFprojectInfo ? selectedFprojectInfo.DESCRIPTION_ : '' }}</p>
+            </div>
+            <div class="fproject-navbar">
+                <div class="s-fproject-text">
+                    <h4>Selected final project: {{ selectedFprojectInfo ? selectedFprojectInfo.TITLE : '' }}</h4>
+                </div>
+                <button class="fproject-button" id="download"
+                    (click)="selectedFprojectId ? downloadFinalProject(selectedFprojectId) : null"><span
+                        class="symbol-large">📥&#xFE0E;</span><br>Download files</button>
+                <div class="admin-btn" *ngIf="idEmployeeRole === 1">
+                    <h4 class="at">Advanced options</h4>
+                    <button class="fproject-button" (click)="showUpdatePopup()"><span
+                            class="symbol-large">✍&#xFE0E;</span><br>Update<br>final project</button>
+                    <app-final-project-update #popupUpdate></app-final-project-update>
+                    <button class="fproject-button" (click)="deleteFinalProject(selectedFprojectId)"><span
+                            class="symbol-large">🗑&#xFE0E;</span><br>Delete<br>final project</button>
+                    <button class="fproject-button" (click)="enableFinalProject(selectedFprojectId)"><span
+                            class="symbol-large">🗸&#xFE0E;</span><br>Set<br>active</button>
+                    <button class="fproject-button" (click)="disableFinalProject(selectedFprojectId)"><span
+                            class="symbol-large">🗙&#xFE0E;</span><br>Set<br>inactive</button>
+                </div>
+            </div>
+        </div>
+    </div>

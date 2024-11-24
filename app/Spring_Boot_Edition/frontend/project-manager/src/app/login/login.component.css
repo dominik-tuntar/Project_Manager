@@ -1,0 +1,78 @@
+.main {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.login-container {
+    color: black;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 30vh;
+    background: url("/../assets/backgrounds/bg17.jpg");
+    background-size: cover;
+    border: 2px solid rgb(139, 193, 197);
+    border-radius: 20px;
+}
+
+label {
+    font-weight: 700;
+    background: -webkit-linear-gradient(#141e30, #243b55);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 17px;
+}
+
+input {
+    background: -webkit-linear-gradient(right, #ece9e6, #ffffff);
+    border-radius: 5px;
+    caret-color: black;
+    color: black;
+    margin-left: 5px;
+    font-size: 15px;
+    background: url("/../assets/backgrounds/texture1.jpg");
+    background-size: cover;
+}
+
+input:focus {
+    border: 2px inset rgb(230, 205, 173);
+    /* Example: Light blue */
+    outline: none;
+}
+
+.lt {
+    background: -webkit-linear-gradient(#6a9113, #141517);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-input,
+.login-text,
+.login-button {
+    padding: 15px;
+}
+
+.login-button {
+    text-align: right;
+}
+
+button {
+    height: 35px;
+    width: 15%;
+    background: url("/../assets/backgrounds/texture9.jpg");
+    background-size: cover;
+}
+
+.insert-err {
+    margin-top: 20px;
+}
+
+.et {
+    background: -webkit-linear-gradient(#333333, #dd1818);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

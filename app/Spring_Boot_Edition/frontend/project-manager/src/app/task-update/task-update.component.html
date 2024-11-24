@@ -1,0 +1,32 @@
+<div class=main *ngIf="isOpen" #mainDiv>
+    <div class="close" #closeDiv><button (click)="close()" class="close-button">X</button></div>
+    <div class=content-wrap>
+        <h3>Update task</h3>
+        <div class=info>
+            <div class=input-wrap>
+                <label for="username">Description</label>
+                <br>
+                <textarea type="textarea" id="content" name="username" #description
+                    [value]="selectedDescription"></textarea>
+            </div>
+            <div class=input-wrap>
+                <label for="users">Assign user:</label>
+
+                <select name="users" id="users" #users [value]="selectedIdEmployee">
+                    <ng-container *ngIf="selectedUsername !== 'N/A'">
+                        <option [value]="selectedIdEmployee">{{ selectedUsername }}</option>
+                    </ng-container>
+                    <option [value]="''">--</option>
+                    <ng-container *ngFor="let employee of employees_project_update">
+                        <option *ngIf="employee.ID_EMPLOYEE !== selectedIdEmployee" [value]="employee.ID_EMPLOYEE">{{
+                            employee.USERNAME }}</option>
+                    </ng-container>
+                </select>
+            </div>
+            <div class="button-wrap">
+                <button class="ut-btn"
+                    (click)="updateTask(selectedTask, users.value === '' ? null : +users.value, description.value)">Update
+                    task</button>
+            </div>
+        </div>
+    </div>

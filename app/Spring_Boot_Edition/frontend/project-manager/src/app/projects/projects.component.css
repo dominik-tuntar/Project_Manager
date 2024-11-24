@@ -1,0 +1,131 @@
+.main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: auto;
+    background: url("/../assets/backgrounds/bg16.jpg");
+    background-size: cover;
+    border-radius: 20px;
+    border: 2px outset rgb(139, 158, 197);
+    color: black;
+}
+
+h1, h2, h5, label {
+    background: -webkit-linear-gradient(#141e30, #243b55);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.content-wrap {
+    display: flex;
+    flex-grow: 1;
+    overflow-y: hidden;
+    max-height: 60%;
+}
+
+.search {
+    padding: 15px;
+    height: 20%;
+    overflow-y: auto;
+}
+
+.project-list,
+.project-details,
+.project-users {
+    height: inherit;
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.project-list {
+    width: 25%;
+    background: url("/../assets/backgrounds/texture10.jpg");
+background-size: cover;
+    border: 2px outset rgb(139, 158, 197);
+}
+
+.project-details {
+    width: 42.33%;
+    overflow-y: auto;
+    background-color: rgb(219, 227, 243);
+    border: 2px outset rgb(139, 158, 197);
+}
+
+.project-users {
+    width: 33.33%;
+    overflow-y: auto;
+    background-color: rgb(219, 227, 243);
+    border: 2px outset rgb(139, 158, 197);
+}
+
+.project-details-wrap {
+    height: 14vh;
+    overflow-y: auto;
+    border: 1px outset rgb(139, 158, 197);
+    padding: 5px;
+    background: url("/../assets/backgrounds/texture10.jpg");
+background-size: cover;
+}
+
+.project-c-attribute {
+    overflow-wrap: break-word;
+}
+
+.main-title {
+    padding: 15px;
+}
+
+.c-attribute-navbar {
+    padding: 10px;
+}
+
+.can-button-wrap {
+    display: flex;
+}
+
+.project-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.project-button {
+    width: 15%;
+    height: 50px;
+    font-size: 10px;
+    margin-left: 10px;
+}
+
+.project-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.project {
+    overflow-wrap: break-word;
+    overflow: auto;
+    width: 100%;
+}
+
+.selected-project,
+.selected-catt {
+    background-color: rgb(144, 174, 238);
+}
+
+.s-project-text {
+    text-align: left;
+    max-width: 40%;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.can-button {
+    width: 30%;
+    margin-right: 5px;
+}
+.s-catt-text {
+    margin-bottom: 10px;
+}

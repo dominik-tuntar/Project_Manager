@@ -1,0 +1,66 @@
+.main {
+    width: 50vw;
+    height: inherit;
+    position: absolute;
+    max-width: 500px;
+    top: 50%;
+    left: 20%;
+    z-index: 1000;
+    background: url("/../assets/backgrounds/texture18.jpg");
+    border: 2px outset rgb(139, 158, 197);
+    background-size: cover;
+    border-radius: 15px;
+}
+
+button {
+    padding: 3px;
+    background: url("/../assets/backgrounds/texture4.jpg");
+    background-size: cover;
+    border-radius: 5px;
+}
+
+h1,
+h2,
+h5,
+h4,
+p,
+h3,
+label {
+    background: -webkit-linear-gradient(#141e30, #243b55);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.close-button {
+    width: 7%;
+    height: 25px;
+}
+
+.close {
+    text-align: right;
+    cursor: grab;
+    background-color: rgb(139, 158, 197);
+}
+
+.content-wrap {
+    text-align: left;
+    padding: 10px;
+}
+
+.info {
+    margin-top: 15px;
+}
+
+.input-wrap {
+    padding: 15px;
+}
+
+.button-wrap {
+    text-align: right;
+    padding: 15px;
+}
+
+#content {
+    width: 66%;
+    height: 10vh;
+}

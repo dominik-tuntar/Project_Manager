@@ -1,0 +1,42 @@
+<div class="main" *ngIf="isOpen" #mainDiv>
+    <div class="close" #closeDiv>
+        <button (click)="close()" class="close-button">X</button>
+    </div>
+    <div class=wrap>
+        <div class=el-users-wrap>
+            <h4>Eligible users</h4>
+            <div class="el-users" *ngFor="let employee of employees">
+                <div class="el-user-item" [ngClass]="{'selected-user': selectedUserId === employee.ID_EMPLOYEE}"
+                    (click)="getSelectedUserInfo(employee)">
+                    <p>{{ employee.USERNAME }} - {{ employee.FULLNAME }}</p>
+                </div>
+            </div>
+        </div>
+        <div class=el-users-wrap>
+            <h4>Users & Lead</h4>
+            <div class="el-users" *ngFor="let employee of employees_project">
+                <div class="el-user-item" [ngClass]="{'selected-user': selectedProjUserId === employee.ID_EMPLOYEE}"
+                    (click)="getSelectedProjUserInfo(employee)">
+                    <p>{{ employee.USERNAME }} - {{ employee.FULLNAME }}</p>
+                </div>
+                <div class=lead-button>
+                    <input type="checkbox" id="lead-{{ employee.ID_EMPLOYEE }}"
+                        [checked]="leadEmployeeId === employee.ID_EMPLOYEE" #leadCheckbox
+                        (change)="selectLead(employee.ID_EMPLOYEE, leadCheckbox.checked)">
+                    <label for="lead-{{ employee.ID_EMPLOYEE }}">Lead</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=selected-el-user>
+        <p>Selected eligible user: {{ selectedUserInfo ? selectedUserInfo.USERNAME : '' }}</p>
+        <button (click)="addUser()">Add</button>
+    </div>
+    <div class=selected-proj-user>
+        <p>Selected project user: {{ selectedProjUserInfo ? selectedProjUserInfo.USERNAME : '' }}</p>
+        <button (click)="removeUser()">Remove</button>
+    </div>
+    <div class=confirm>
+        <button (click)="saveChanges()">Save changes</button>
+    </div>
+</div>

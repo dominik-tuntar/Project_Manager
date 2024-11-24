@@ -1,0 +1,62 @@
+<div class="main">
+    <h1 class="main-title">🖅&#xFE0E; Inbound requests</h1>
+    <div class="search">
+        <label for="irequest-search">🔍&#xFE0E; Search for inbound request</label>
+        <br><br>
+        <input type="text" id="irequest-search" name="irequest-search" [(ngModel)]="searchTerm"
+            (keyup)="filterIrequests()">
+    </div>
+    <div class="content-wrap">
+        <div class="irequest-list">
+            <div *ngFor="let irequest of filteredIrequests" class="irequest-wrap">
+                <div class="irequest" [ngClass]="{'selected-irequest': selectedIrequestId === irequest.ID_I_REQUEST}"
+                    (click)="getSelectedIrequestInfo(irequest)">
+                    <p>{{irequest.TITLE}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="irequest-details">
+            <h3>Inbound request Details</h3>
+            <div class="irequest-details-wrap">
+                <p><strong>Sent by:</strong> {{ selectedIrequestInfo ? selectedIrequestInfo.SENDER_NAME : '' }}</p>
+                <p><strong>Description:</strong> {{ selectedIrequestInfo ? selectedIrequestInfo.DESCRIPTION_ : '' }}</p>
+                <div class="cca-wrap" *ngFor="let custom_attribute of filteredAttributes">
+                    <div class="irequest-c-attribute"
+                        *ngIf="custom_attribute.TABLE_NAME === 'IREQUEST' && custom_attribute.TABLE_ROW === selectedIrequestId"
+                        [ngClass]="{'selected-catt': selectedCattId === custom_attribute.ID_C_ATTRIBUTE}"
+                        (click)="getSelectedCattInfo(custom_attribute)">
+                        <p>{{custom_attribute.TITLE}} - {{custom_attribute.CONTENT_}}</p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="idEmployeeRole === 1" class="c-attribute-navbar">
+                <div class="s-catt-text">
+                    <h4>Selected item: {{ selectedCattInfo ? selectedCattInfo.TITLE : '' }}</h4>
+                </div>
+                <button class="can-button" (click)="showCattCreatePopup()"><span
+                        class="symbol-large">➕&#xFE0E;</span><br>Add<br>detail</button>
+                <app-cattribute-create #popupCattCreate
+                    (customAttributeCreated)="onCustomAttributeCreated()"></app-cattribute-create>
+                <button class=can-button (click)="showCattUpdatePopup()"><span
+                        class="symbol-large">✍&#xFE0E;</span><br>Update<br>detail</button>
+                <app-cattribute-update #popupCattUpdate
+                    (customAttributeUpdated)="onCustomAttributeUpdated($event)"></app-cattribute-update>
+                <button class="can-button" (click)="deleteCustomAttribute(selectedCattId)"><span
+                        class="symbol-large">➖&#xFE0E;</span><br>Remove<br>detail</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="idEmployeeRole === 1" class="irequest-navbar">
+        <div class="s-irequest-text">
+            <h2>Selected request: {{ selectedIrequestInfo ? selectedIrequestInfo.TITLE : '' }}</h2>
+        </div>
+        <button class=irequest-button (click)="showCreatePopup()"><span
+                class="symbol-large">🖅&#xFE0E;</span><br>New<br>Inbound request</button>
+        <app-irequest-create #popupCreate (irequestCreated)="onIrequestCreated()"></app-irequest-create>
+        <button class="irequest-button" (click)="showUpdatePopup()"><span
+                class="symbol-large">✍&#xFE0E;</span><br>Update<br>Inbound request</button>
+        <app-irequest-update #popupUpdate (irequestUpdated)="onIrequestUpdated($event)"></app-irequest-update>
+        <button class="irequest-button" (click)="deleteIrequest(selectedIrequestId)"><span
+                class="symbol-large">🗑&#xFE0E;</span><br>Delete<br>Inbound request</button>
+    </div>
+</div>

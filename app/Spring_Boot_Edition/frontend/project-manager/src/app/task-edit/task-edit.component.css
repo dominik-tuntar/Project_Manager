@@ -1,0 +1,132 @@
+.main {
+    width: 95vw;
+    max-width: 1200px;
+    height: 60%;
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: url("/../assets/backgrounds/bg8.jpg");
+    background-size: cover;
+    border-radius: 20px;
+    border: 3px outset rgb(197, 139, 139);
+    color: black;
+}
+
+h1,
+h2,
+h5,
+h4,
+p,
+h3,
+label,
+strong {
+    background: -webkit-linear-gradient(#c31432, #240b36);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+button {
+    background: url("/../assets/backgrounds/texture11.jpg");
+    background-size: cover;
+    border: 1px solid rgb(197, 139, 139);
+}
+
+.main-title {
+    margin-bottom: 30px;
+}
+
+.close-button {
+    width: 5%;
+    height: 35px;
+    margin: 10px;
+}
+
+.close {
+    text-align: right;
+    cursor: grab;
+    background-color: rgb(197, 139, 139);
+}
+
+.content-wrap {
+    text-align: left;
+    padding: 10px;
+    height: 80%;
+    overflow-y: auto;
+}
+
+.column-text {
+    text-align: left;
+}
+
+.task-wrap {
+    display: flex;
+}
+
+.task-cond {
+    height: 7vh;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+    min-height: 61px;
+    display: flex;
+    align-items: center;
+}
+
+.complete-cond {
+    overflow-y: auto;
+    overflow-wrap: break-word;
+    height: 7vh;
+    min-height: 61px;
+    align-items: center;
+    display: flex;
+}
+
+.user-cond {
+    overflow-y: auto;
+    overflow-wrap: break-word;
+    height: 7vh;
+    min-height: 61px;
+    align-items: center;
+    display: flex;
+}
+
+.options-cond {
+    display: flex;
+    height: 7vh;
+    min-height: 61px;
+    padding: 5px;
+}
+
+.task-description {
+    width: 30%;
+}
+
+.task-user {
+    width: 10%;
+}
+
+.task-options {
+    width: 45%;
+}
+
+.task-complete {
+    width: 15%;
+}
+
+.te-button {
+    width: 20%;
+}
+
+.task-navbar {
+    text-align: right;
+    height: 10%;
+}
+
+.ntb {
+    height: 80%;
+    width: 10vw;
+    margin: 5px;
+}

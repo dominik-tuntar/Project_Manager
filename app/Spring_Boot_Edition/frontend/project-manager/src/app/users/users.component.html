@@ -1,0 +1,64 @@
+<div class=main>
+    <h1 class=main-title>👥&#xFE0E; Users</h1>
+    <div class=search>
+        <label for="user-search">🔍&#xFE0E; Search for user</label>
+        <br><br>
+        <input type="text" id="user-search" name="user-search" [(ngModel)]="searchTerm" (keyup)="filterUsers()">
+    </div>
+    <div class=content-wrap>
+        <div class=user-list>
+            <div *ngFor="let employee of filteredUsers" class=user-wrap>
+                <div class=user [ngClass]="{'selected-user': selectedUserId === employee.ID_EMPLOYEE}"
+                    (click)="getSelectedUserInfo(employee)">
+                    <p><strong>{{employee.USERNAME}}</strong> - {{employee.FULLNAME}}</p>
+                </div>
+                <div class=user-status>
+                    <p>{{ employee.STATUS === 1 ? '🗸&#xFE0E; Active' : '🗙&#xFE0E; Inactive' }}</p>
+                </div>
+            </div>
+        </div>
+        <div class=user-details>
+            <h3 class="ud-text">User details</h3>
+            <div class=user-details-wrap>
+                <div class=uca-wrap *ngFor="let custom_attribute of filteredAttributes">
+                    <div class=user-c-attribute
+                        *ngIf="custom_attribute.TABLE_NAME === 'EMPLOYEE' && custom_attribute.TABLE_ROW === selectedUserId"
+                        [ngClass]="{'selected-catt': selectedCattId === custom_attribute.ID_C_ATTRIBUTE}"
+                        (click)="getSelectedCattInfo(custom_attribute)">
+                        <p><strong>{{custom_attribute.TITLE}}</strong> - {{custom_attribute.CONTENT_}}</p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="idEmployeeRole === 1" class=c-attribute-navbar>
+                <div class=s-catt-text>
+                    <h4>Selected detail: {{ selectedCattInfo ? selectedCattInfo.TITLE : '' }}</h4>
+                </div>
+                <button class=can-button (click)="showCattCreatePopup()"><span
+                        class="symbol-large">➕&#xFE0E;</span><br>Add<br>detail</button>
+                <app-cattribute-create #popupCattCreate
+                    (customAttributeCreated)="onCustomAttributeCreated()"></app-cattribute-create>
+                <button class=can-button (click)="showCattUpdatePopup()"><span
+                        class="symbol-large">✍&#xFE0E;</span><br>Update<br>detail</button>
+                <app-cattribute-update #popupCattUpdate
+                    (customAttributeUpdated)="onCustomAttributeUpdated($event)"></app-cattribute-update>
+                <button class=can-button (click)="deleteCustomAttribute(selectedCattId)"><span
+                        class="symbol-large">➖&#xFE0E;</span><br>Remove<br>detail</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="idEmployeeRole === 1" class=user-navbar>
+        <div class=s-user-text>
+            <h2>Selected user: {{ selectedUserInfo ? selectedUserInfo.USERNAME : '' }}</h2>
+        </div>
+        <button class=user-button (click)="showCreatePopup()"><span class="symbol-large">👤&#xFE0E;</span><br>Create new
+            User</button>
+        <app-user-create #popupCreate (userCreated)="onUserCreated()"></app-user-create>
+        <button class=user-button (click)="showUpdatePopup()"><span class="symbol-large">✍&#xFE0E;</span><br>Update
+            User</button>
+        <app-user-update #popupUpdate (userUpdated)="onUserUpdated($event)"></app-user-update>
+        <button class=user-button (click)="disableUser(selectedUserId)"><span
+                class="symbol-large">🗙&#xFE0E;</span><br>Set user as inactive</button>
+        <button class=user-button (click)="enableUser(selectedUserId)"><span
+                class="symbol-large">🗸&#xFE0E;</span><br>Set user as active</button>
+    </div>
+</div>

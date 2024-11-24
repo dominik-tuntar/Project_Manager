@@ -1,0 +1,26 @@
+<div class=main *ngIf="isOpen" #mainDiv>
+    <div class="close" #closeDiv>
+        <button (click)="close()" class="close-button">X</button>
+    </div>
+    <div class=content-wrap>
+        <h3>Update detail</h3>
+        <div class=info>
+            <div class=input-wrap>
+                <label for="title">Title</label>
+                <br>
+                <input type="text" id="title" name="title" value="{{ selectedCatt?.TITLE }}" #title>
+            </div>
+            <div class=input-wrap>
+                <label for="content">Content</label>
+                <br>
+                <textarea type="text" id="content" name="content" value="{{ selectedCatt?.CONTENT_ }}"
+                    #content></textarea>
+            </div>
+        </div>
+        <div class="button-wrap">
+            <button
+                (click)="updateCustomAttribute(selectedCatt?.ID_C_ATTRIBUTE ?? 0, title.value, content.value)">Update
+                detail</button>
+        </div>
+    </div>
+</div>

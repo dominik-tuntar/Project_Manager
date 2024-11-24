@@ -1,0 +1,27 @@
+<div class=main *ngIf="isOpen" #mainDiv>
+    <div class="close" #closeDiv><button (click)="close()" class="close-button">X</button></div>
+    <div class=content-wrap>
+        <h3>Create new task</h3>
+        <div class=info>
+            <div class=input-wrap>
+                <label for="username">Description</label>
+                <br>
+                <textarea type="textarea" id="content" name="username" #description></textarea>
+            </div>
+            <div class=input-wrap>
+                <label for="users">Assign user:</label>
+
+                <select name="users" id="users" #users>
+                    <option [value]="''">--</option>
+                    <option *ngFor="let employee of employees_project_create" [value]="employee.ID_EMPLOYEE">{{
+                        employee.USERNAME }}</option>
+                </select>
+            </div>
+            <div class="button-wrap">
+                <button class="ut-btn"
+                    (click)="createTask(selectedProject, users.value === '' ? null : +users.value, description.value)">🖳&#xFE0E;
+                    Create new task</button>
+            </div>
+
+        </div>
+    </div>

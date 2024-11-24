@@ -1,0 +1,25 @@
+<div class="main" *ngIf="isOpen" #mainDiv>
+    <div class="close" #closeDiv>
+        <button (click)="close()" class="close-button">X</button>
+    </div>
+    <div class="content-wrap" *ngIf="selectedProject">
+        <h3>Update project: {{ selectedProject.TITLE }}</h3>
+        <div class="info">
+            <div class="input-wrap">
+                <label for="title">Project Title</label>
+                <br>
+                <input type="text" id="title" name="title" [(ngModel)]="selectedProject.TITLE" #title>
+            </div>
+            <div class="input-wrap">
+                <label for="description">Project Description</label>
+                <br>
+                <textarea id="content" name="description" [(ngModel)]="selectedProject.DESCRIPTION_" #description
+                    rows="3"></textarea>
+            </div>
+        </div>
+        <div class="button-wrap">
+            <button (click)="updateProject(selectedProject.ID_DEVPROJECT, title.value, description.value)">Update
+                Project</button>
+        </div>
+    </div>
+</div>

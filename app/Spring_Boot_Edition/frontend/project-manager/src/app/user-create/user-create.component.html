@@ -1,0 +1,37 @@
+<div class=main *ngIf="isOpen" #mainDiv>
+    <div class="close" #closeDiv>
+        <button (click)="close()" class="close-button">X</button>
+    </div>
+    <div class=content-wrap>
+        <h3>Create new user</h3>
+        <div class=info>
+            <div class=input-wrap>
+                <label for="username">Username</label>
+                <br>
+                <input type="text" id="username" name="username" #username>
+            </div>
+            <div class=input-wrap>
+                <label for="fullname">Full name</label>
+                <br>
+                <input type="text" id="fullname" name="fullname" #fullname>
+            </div>
+            <div class=input-wrap>
+                <label for="password">Password</label>
+                <br>
+                <input type="password" id="password" name="password" #password>
+            </div>
+            <div class=input-wrap>
+                <label for="password2">Confirm password</label>
+                <br>
+                <input type="password" id="password2" name="password2" #password2>
+            </div>
+        </div>
+        <div class="button-wrap">
+            <div class="insert-err">
+                <h4 *ngIf="passwordMatch === 0" class="et">⚠&#xFE0E; Passwords do not match</h4>
+            </div>
+            <button (click)="createUser(fullname.value, username.value, password.value, password2.value)">Create new
+                user</button>
+        </div>
+    </div>
+</div>

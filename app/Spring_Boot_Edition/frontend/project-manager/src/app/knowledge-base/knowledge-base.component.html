@@ -1,0 +1,112 @@
+<div class="file-viewer">
+    <h1 class="main-title">📚&#xFE0E; Knowledge base</h1>
+    <div class="main-tfv">
+        <div class="content-wrap-tfv">
+            <div class="file-display">
+                <div class="root-folder" *ngFor="let folder of fileSystemStructure">
+                    <div [style.marginLeft.px]="0" class="container">
+                        <span *ngIf="folder.isFolder">📂&#xFE0E;</span>
+                        <span *ngIf="!folder.isFolder">📄&#xFE0E;</span>
+                        <p>root</p><br>
+
+                        <button class="folder-element" *ngIf="folder.isFolder"
+                            (click)="toggleFolderVisibility(folder)">
+                            {{ folder.showChildren ? '▼' : '►' }}
+                        </button>
+
+                        <button class="folder-element" *ngIf="folder.isFolder && !folder.newFolderVisible && idEmployeeRole === 1"
+                            (click)="handleNewFolder(folder)">New folder</button>
+                        <input class="folder-element" *ngIf="folder.newFolderVisible" type="text"
+                            id="new-fname" name="new-fname" [(ngModel)]="folder.newFolderName">
+                        <button class="folder-element" *ngIf="folder.newFolderVisible"
+                            (click)="createFolder(folder.absolutePath!, folder.newFolderName!)">Create</button>
+                        <button class="folder-element" *ngIf="folder.newFolderVisible"
+                            (click)="cancelNewFolder(folder)">Cancel</button>
+                        <input class="folder-element" *ngIf="folder.uploadFileVisible" type="file"
+                            (change)="onFileSelected($event, folder)">
+                        <button class="folder-element" *ngIf="!folder.uploadFileVisible && idEmployeeRole === 1"
+                            (click)="folder.uploadFileVisible = true" >Upload File</button>
+                        <button class="folder-element" *ngIf="folder.uploadFileVisible"
+                            (click)="folder.uploadFileVisible = false">Cancel</button>
+                        <p *ngIf="folder.isUploading && folder.isFolder">Uploading...</p>
+                        <p *ngIf="folder.uploadComplete&& folder.isFolder">Upload Complete</p>
+                    </div>
+
+                    <div *ngIf="folder.showChildren">
+                        <ng-container
+                            *ngTemplateOutlet="renderChildren; context: { $implicit: folder.children, level: 1 }">
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #renderChildren let-children let-level="level">
+        <div class="folder-lv1" *ngFor="let child of children">
+            <div [style.marginLeft.px]="level * 20" class="container">
+                <div class="file-icon">
+                    <span class="folder-element" *ngIf="child.isFolder">
+                        <span class="symbol-large">📂&#xFE0E;</span>
+                    </span>
+                    <span class="folder-element" *ngIf="!child.isFolder">
+                        <span class="symbol-large">📄&#xFE0E;</span>
+                    </span>
+                    <p class="folder-element">{{ child.name }}</p>
+                </div>
+                <br>
+
+                <button class="folder-element" *ngIf="!child.isFolder && !child.renameFileVisible && idEmployeeRole === 1"
+                    (click)="handleRenameFile(child)">Rename</button>
+                <input class="folder-element" *ngIf="child.renameFileVisible" type="text"
+                    [(ngModel)]="child.renameFileName" placeholder="New file name">
+                <button class="folder-element" *ngIf="child.renameFileVisible"
+                    (click)="renameFile(child.absolutePath!, child.renameFileName!)">Save</button>
+                <button class="folder-element" *ngIf="child.renameFileVisible"
+                    (click)="cancelRenameFile(child)">Cancel</button>
+
+                <button class="folder-element" *ngIf="!child.isFolder"
+                    (click)="downloadFile(child)">Download</button>
+                <button class="folder-element" *ngIf="!child.isFolder && idEmployeeRole === 1"
+                    (click)="deleteFile(child.absolutePath!)">Delete</button>
+
+                <button class="folder-element" *ngIf="child.isFolder"
+                    (click)="toggleFolderVisibility(child)">
+                    {{ child.showChildren ? '▼' : '►' }}
+                </button>
+                <button class="folder-element" *ngIf="child.isFolder && !child.newFolderVisible && idEmployeeRole === 1"
+                    (click)="handleNewFolder(child)">New folder</button>
+                <input class="folder-element" *ngIf="child.newFolderVisible" type="text" id="new-fname"
+                    name="new-fname" [(ngModel)]="child.newFolderName">
+                <button class="folder-element" *ngIf="child.newFolderVisible"
+                    (click)="createFolder(child.absolutePath!, child.newFolderName!)">Create</button>
+                <button class="folder-element" *ngIf="child.newFolderVisible"
+                    (click)="cancelNewFolder(child)">Cancel</button>
+                <input class="folder-element" *ngIf="child.uploadFileVisible && child.isFolder" type="file"
+                    (change)="onFileSelected($event, child)">
+                <button class="folder-element" *ngIf="!child.uploadFileVisible && child.isFolder && idEmployeeRole === 1"
+                    (click)="child.uploadFileVisible = true">Upload File</button>
+                <button class="folder-element" *ngIf="child.uploadFileVisible && child.isFolder"
+                    (click)="child.uploadFileVisible = false">Cancel</button>
+                <button class="folder-element" *ngIf="child.isFolder && !child.renameFolderVisible && idEmployeeRole === 1"
+                    (click)="handleRenameFolder(child)">Rename folder</button>
+                <input class="folder-element" *ngIf="child.renameFolderVisible" type="text" id="new-fname"
+                    name="new-fname" [(ngModel)]="child.renameFolderName">
+                <button class="folder-element" *ngIf="child.renameFolderVisible"
+                    (click)="renameFolder(child.absolutePath!, child.renameFolderName!)">Rename</button>
+                <button class="folder-element" *ngIf="child.renameFolderVisible"
+                    (click)="cancelRenameFolder(child)">Cancel</button>
+                <button class="folder-element" *ngIf="child.isFolder && idEmployeeRole === 1"
+                    (click)="deleteFolder(child.absolutePath!)">Delete folder</button>
+                <p class="folder-element" *ngIf="child.isUploading && child.isFolder">Uploading...</p>
+                <p class="folder-element" *ngIf="child.uploadComplete&& child.isFolder">Upload Complete</p>
+            </div>
+
+            <div *ngIf="child.showChildren">
+                <ng-container
+                    *ngTemplateOutlet="renderChildren; context: { $implicit: child.children, level: level + 1 }">
+                </ng-container>
+            </div>
+        </div>
+    </ng-template>
+</div>

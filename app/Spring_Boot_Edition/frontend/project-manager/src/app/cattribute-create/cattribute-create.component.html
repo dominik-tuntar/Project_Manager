@@ -1,0 +1,23 @@
+<div class="main" *ngIf="isOpen" #mainDiv>
+    <div class="close" #closeDiv>
+        <button (click)="close()" class="close-button">X</button>
+    </div>
+    <div class="content-wrap">
+        <h3>Create detail</h3>
+        <div class="info">
+            <div class="input-wrap">
+                <label for="title">Title</label>
+                <br>
+                <input type="text" id="title" name="title" [(ngModel)]="title">
+            </div>
+            <div class="input-wrap">
+                <label for="content">Content</label>
+                <br>
+                <textarea type="text" id="content" name="content" [(ngModel)]="content"></textarea>
+            </div>
+        </div>
+        <div class="button-wrap">
+            <button (click)="createCustomAttribute()">Create detail</button>
+        </div>
+    </div>
+</div>

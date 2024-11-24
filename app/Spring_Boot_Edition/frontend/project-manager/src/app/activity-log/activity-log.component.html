@@ -1,0 +1,9 @@
+<div class="main">
+    <h1 class="main-title">📜&#xFE0E; Activity Log</h1>
+
+    <div class="content-wrap">
+        <div class="log" *ngFor="let act of activity">
+            <p><strong><i>{{act.TIMESTAMP_}}</i></strong> - {{act.MESSAGE}}</p>
+        </div>
+    </div>
+</div>
