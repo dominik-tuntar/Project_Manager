@@ -1,7 +1,7 @@
 # Project Manager
 ![Demo Video](https://github.com/user-attachments/assets/cc97b132-db3e-49e3-8b4c-543ce7c013bf)
 
-Project Manager is a web application designed to be a tool for software consulting firms to manage their software projects. The application runs on Java Spring Boot, uses Angular as its frontend framework, and stores data on an Oracle database. Main functionalities include user management, request management, client management, and a project organization system that involves tasks, project leads, a built-in file system, and project finalization. Other functionalities include a knowledge base file system, a user activity log, and a JWT based authentication system.
+Project Manager is a web application designed to be a tool for software consulting firms to manage their software projects. The application runs on Java Spring Boot, uses Angular as its frontend framework, and stores data on an Oracle database. Main functionalities include user management, request management, client management, and a project organization system that involves tasks, project leads, a built-in file system, and project finalization. Other functionalities include a knowledge base file system and a user activity log.
 # Screenshots
 ![tasks](https://github.com/user-attachments/assets/42b6eb19-ebd0-457e-8065-de970c9194de)
 ![users](https://github.com/user-attachments/assets/e8af0adc-8c2d-42d0-b5ea-5911cf34304c)
